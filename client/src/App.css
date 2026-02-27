@@ -1,0 +1,173 @@
+/* --- 1. Global Variables & Base --- */
+:root {
+  --bg-light-pink: #fce4ec; 
+  --dark-grey: #333333;
+  --vibrant-pink: #f06292;
+  --glass-bg: rgba(255, 255, 255, 0.7); /* Slightly higher opacity for readability */
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-light-pink);
+  font-family: 'Quicksand', sans-serif;
+  color: var(--dark-grey);
+}
+
+/* --- 2. Login Page --- */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 35px;
+  padding: 50px 40px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+/* --- 3. Dashboard Structure --- */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  width: 260px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  border-radius: 20px;
+  height: 85vh; 
+  position: sticky; /* Floats as you scroll desktop */
+  top: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.main-content {
+  flex-grow: 1;
+  min-width: 0; 
+}
+
+/* --- 4. Sidebar Elements --- */
+.sidebar-brand { font-size: 1.4rem; font-weight: 800; margin-bottom: 30px; }
+.sidebar-nav { flex-grow: 1; display: flex; flex-direction: column; gap: 10px; }
+.nav-item {
+  padding: 12px; border-radius: 10px; border: none; background: none;
+  text-align: left; font-weight: 600; cursor: pointer; color: #666;
+}
+.nav-item.active { background: var(--bg-light-pink); color: var(--vibrant-pink); }
+
+.logout-btn {
+  background: var(--dark-grey); color: white; border: none;
+  padding: 12px; border-radius: 12px; cursor: pointer; font-weight: 700;
+}
+
+/* --- 5. Table Styling --- */
+.table-container {
+  background: white;
+  border-radius: 20px;
+  overflow-x: auto; /* Scroll table on mobile */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.full-width-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th { text-align: left; padding: 20px; background: #fafafa; font-size: 0.75rem; color: #999; text-transform: uppercase; }
+td { padding: 20px; border-bottom: 1px solid #f9f9f9; }
+
+.view-btn {
+  background: var(--vibrant-pink); color: white; border: none;
+  padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600;
+}
+
+/* --- 6. Lead Modal (Right Side Drawer) --- */
+.modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.3); z-index: 1000;
+  display: flex; justify-content: flex-end;
+}
+
+.modal-content.lead-notes-container {
+  background-color: #f5f5f5; 
+  width: 450px;
+  max-width: 100%;
+  height: 100vh;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+.notes-list { flex-grow: 1; overflow-y: auto; margin-bottom: 20px; }
+.note-item { background: white; padding: 15px; border-radius: 12px; margin-bottom: 10px; }
+
+.note-form { display: flex; flex-direction: column; gap: 15px; }
+
+.lead-notes-textarea {
+  width: 100%;
+  min-height: 180px;
+  padding: 15px;
+  border-radius: 15px;
+  border: 1px solid #ddd;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.save-note-btn {
+  align-self: flex-start;
+  padding: 12px 30px;
+  background: var(--dark-grey);
+  color: white;
+  border: none;
+  border-radius: 25px; /* Soft edges */
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* --- 7. Mobile Responsiveness --- */
+@media (max-width: 1024px) {
+  .dashboard-layout { flex-direction: column; }
+  .sidebar { width: 100%; height: auto; position: relative; top: 0; margin-bottom: 10px; }
+  .main-content { padding: 0; }
+  .full-width-table { min-width: 600px; }
+}
