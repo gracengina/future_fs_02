@@ -8,7 +8,10 @@ const notesRoutes = require('./routes/notes');
 const app = express();
 
 // 1. MIDDLEWARE 
-app.use(cors());
+app.use(cors(
+    // frontend url
+   
+));
 app.use(express.json());
 
 // 2. ROOT TEST (Check http://localhost:5000)
