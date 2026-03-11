@@ -11,7 +11,7 @@ const app = express();
 app.use(cors(
     // frontend url 
     {
-        origin: 'https://crm.vercel.app',
+        origin: 'https://crmanagement.vercel.app',
         credentials: true
     }
 
