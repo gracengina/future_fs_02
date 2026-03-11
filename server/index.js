@@ -8,15 +8,13 @@ const notesRoutes = require('./routes/notes');
 const app = express();
 
 // 1. MIDDLEWARE 
-app.use(cors(
-    // frontend url 
-    {
-        origin: 'https://crmanagement.vercel.app',
-        credentials: true
-    }
+const corsOptions = {
+  origin: 'https://crmanagement.vercel.app' || 'http://localhost:3000',
+  optionsSuccessStatus: 200
+};
 
+app.use(cors(corsOptions));
 
-));
 app.use(express.json());
 
 // 2. ROOT TEST (Check http://localhost:5000)
