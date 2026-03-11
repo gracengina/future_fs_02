@@ -9,8 +9,13 @@ const app = express();
 
 // 1. MIDDLEWARE 
 app.use(cors(
-    // frontend url
-   
+    // frontend url 
+    {
+        origin: 'https://crm.vercel.app',
+        credentials: true
+    }
+
+
 ));
 app.use(express.json());
 
