@@ -10,7 +10,10 @@ const app = express();
 // 1. MIDDLEWARE 
 const corsOptions = {
   origin: 'https://crmanagement.vercel.app' || 'http://localhost:3000',
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
 };
 
 app.use(cors(corsOptions));
